@@ -41,5 +41,42 @@ def converter_mes_para_extenso(data): # Definimos o nome da função e os parâm
 print(converter_mes_para_extenso('10/05/2021')) # Invocamos a função, passando como parâmetro a data a ser convertida.
 
 
+
+
+#DESAFIO
+'''
+Após uma primeira reunião, a equipe fez um levantamento de requisitos e concluiu que a função a ser construída precisa considerar os seguintes itens:
+
+O valor do produto (obrigatório).
+A quantidade do produto (obrigatório).
+A moeda em que deve ser feito o cálculo (obrigatório, sendo padrão o real).
+A porcentagem do desconto que será concedida na compra (opcional).
+A porcentagem de acréscimo, que depende da forma de pagamento (opcional).
+'''
+def calcular_valor(valor_prod, qtde, moeda = "real", desconto = None, acrescimo = None):
+  v_bruto = valor_prod * qtde
+
+  if desconto:
+    v_liquido = v_bruto - (v_bruto * (desconto / 100))
+  elif acrescimo:
+    v_liquido = v_bruto + (v_bruto * (acrescimo / 100))
+  else:
+    v_liquido = v_bruto
+
+  if moeda == 'real':
+    return v_liquido
+  elif moeda == 'dolar':
+    return v_liquido * 5
+  elif moeda == 'euro':
+    return v_liquido * 5.7
+  else:
+    print("Moeda não cadastrada!")
+    return 0
+
+valor_a_pagar = calcular_valor(valor_prod = 32, qtde = 5, desconto = 5)
+print(f"O valor final da conta é {valor_a_pagar}")
+
+
+
   
   
